@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    //Variables
+
     public CharacterController controller;
 
     public float speed = 5;
