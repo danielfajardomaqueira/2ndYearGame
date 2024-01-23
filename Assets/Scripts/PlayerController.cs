@@ -15,12 +15,17 @@ public class PlayerController : MonoBehaviour
 
     float turnSmoothVelocity;
 
+    private Vector3 playerGravity;
+    public float gravityValue = -9.81f;
+
     public Transform cam;
 
     public ParticleSystem particles;
 
     [SerializeField]private bool isMoving = false;
-
+    
+    
+    
 
     void Update()
     {
@@ -34,7 +39,9 @@ public class PlayerController : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
 
-
+            // Movimiento del jugador para que siga de frente
+            // adonde apunta la camara.
+           
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -44,6 +51,11 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+
+
+
+            // Detecta cuando el jugador se mueve 
+            // para generar o pausar particulas
 
             if (!isMoving)
             {
@@ -59,7 +71,13 @@ public class PlayerController : MonoBehaviour
                 particles.Stop();
                 isMoving = false;
             }
-        }    
+        }
+
+        
+        //Estas lineas hacen que el personaje tenga gravedad.
+        
+        playerGravity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerGravity * Time.deltaTime);
 
     }
 }
