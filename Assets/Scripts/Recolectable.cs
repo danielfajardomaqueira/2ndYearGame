@@ -6,6 +6,7 @@ public class Recolectable : MonoBehaviour
 {
 
     public LogCounter logcounter;
+    
 
     void Start()
     {
@@ -17,7 +18,10 @@ public class Recolectable : MonoBehaviour
         if (other.tag == "Player")
         {
           logcounter.logCounter = logcounter.logCounter + 1;
+          
           Destroy(gameObject);
+
+            logcounter.logsText.text = "Logs Counter: " + logcounter.logCounter;
         }
         
     }
