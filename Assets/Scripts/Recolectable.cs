@@ -6,7 +6,9 @@ public class Recolectable : MonoBehaviour
 {
 
     public LogCounter logcounter;
-    
+
+    public ParticleSystem getLogParticles;
+
 
     void Start()
     {
@@ -22,6 +24,8 @@ public class Recolectable : MonoBehaviour
           Destroy(gameObject);
 
             logcounter.logsText.text = "Logs Counter: " + logcounter.logCounter;
+
+            getLogParticles.Play();
         }
         
     }

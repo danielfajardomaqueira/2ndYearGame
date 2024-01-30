@@ -20,12 +20,14 @@ public class PlayerController : MonoBehaviour
 
     public Transform cam;
 
-    public ParticleSystem particles;
+    public ParticleSystem walkParticles;
 
     [SerializeField]private bool isMoving = false;
+
     
-    
-    
+
+
+
 
     void Update()
     {
@@ -59,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
             if (!isMoving)
             {
-                particles.Play();
+                walkParticles.Play();
                 isMoving = true;
             }
 
@@ -68,7 +70,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isMoving)
             {
-                particles.Stop();
+                walkParticles.Stop();
                 isMoving = false;
             }
         }
@@ -80,4 +82,6 @@ public class PlayerController : MonoBehaviour
         controller.Move(playerGravity * Time.deltaTime);
 
     }
+
+    
 }

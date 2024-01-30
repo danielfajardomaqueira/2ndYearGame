@@ -8,4 +8,6 @@ public class LogCounter : MonoBehaviour
 {
     public TMP_Text logsText;
     public int logCounter = 0;
+
+    
 }
