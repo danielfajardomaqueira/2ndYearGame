@@ -24,10 +24,17 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]private bool isMoving = false;
 
-    
+    //Animations
+    public Animator animator;
+
+    public string variableMovement;
+    public string variableIsGround;
 
 
-
+    void Start()
+    {
+        controller = GetComponent<CharacterController>();
+    }
 
     void Update()
     {
@@ -54,7 +61,7 @@ public class PlayerController : MonoBehaviour
             
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
-
+            
 
             // Detecta cuando el jugador se mueve 
             // para generar o pausar particulas
@@ -80,6 +87,11 @@ public class PlayerController : MonoBehaviour
         
         playerGravity.y += gravityValue * Time.deltaTime;
         controller.Move(playerGravity * Time.deltaTime);
+
+
+        //activan las animaciones
+        animator.SetBool(variableIsGround, controller.isGrounded);
+        animator.SetFloat(variableMovement, (Mathf.Abs(vertical) + Mathf.Abs(horizontal)));
 
     }
 
