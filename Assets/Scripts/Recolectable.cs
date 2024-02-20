@@ -5,9 +5,7 @@ using UnityEngine;
 public class Recolectable : MonoBehaviour
 {
 
-    public LogCounter logcounter;
-
-    public ParticleSystem getLogParticles;
+    private LogCounter logcounter;
 
 
     void Start()
@@ -25,8 +23,9 @@ public class Recolectable : MonoBehaviour
 
             logcounter.logsText.text = "Logs Counter: " + logcounter.logCounter;
 
-            getLogParticles.Play();
+            
         }
+        
         
     }
 

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     //Variables
+    [Header("Variables")]
 
     public CharacterController controller;
 
@@ -20,20 +21,31 @@ public class PlayerController : MonoBehaviour
 
     public Transform cam;
 
-    public ParticleSystem walkParticles;
+    private bool isMoving = false;
 
-    [SerializeField]private bool isMoving = false;
+    //GetLogParticles
+    [Header("Particles")]
+    public ParticleSystem walkParticles;
+    public Transform getLogParticles;
 
     //Animations
+    [Header("Animations")]
     public Animator animator;
 
     public string variableMovement;
     public string variableIsGround;
 
+    //Sounds
+    [Header("Sounds")]
+    public AudioSource playerSound;
+    public AudioClip walkSFX;
+    public AudioClip recolectableSFX;
+
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        playerSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -70,6 +82,7 @@ public class PlayerController : MonoBehaviour
             {
                 walkParticles.Play();
                 isMoving = true;
+                playerSound.Play();
             }
 
         }
@@ -79,6 +92,7 @@ public class PlayerController : MonoBehaviour
             {
                 walkParticles.Stop();
                 isMoving = false;
+                playerSound.Stop();
             }
         }
 
@@ -95,5 +109,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Recolectable")
+        {
+            Instantiate(getLogParticles, transform.position, Quaternion.identity);
+
+            playerSound.PlayOneShot(recolectableSFX, 1.0f);
+        }
+    }
     
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7219427012630624650}
   m_Layer: 0
   m_Name: SpinLog
-  m_TagString: Untagged
+  m_TagString: Recolectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logcounter: {fileID: 0}
-  getLogParticles: {fileID: 0}
+  getLogParticles: {fileID: 102069052363847263, guid: 7cf9e381cda66d84fa15a2e9ad48013f,
+    type: 3}
 --- !u!1001 &5750852941180292826
 PrefabInstance:
   m_ObjectHideFlags: 0
