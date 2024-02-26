@@ -22,11 +22,6 @@ public class Recolectable : MonoBehaviour
           Destroy(gameObject);
 
             logcounter.logsText.text = "Logs Counter: " + logcounter.logCounter;
-
-            
         }
-        
-        
     }
-
 }
