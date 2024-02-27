@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private bool pause;
-
+    [SerializeField]private GameObject pauseMenu;
+    private bool pause;
+    
     private void Start()
     {
         Time.timeScale = 1f;

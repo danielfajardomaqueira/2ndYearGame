@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
             
 
             // Detecta cuando el jugador se mueve 
-            // para generar o pausar particulas
+            // para generar o pausar particulas de caminado
 
             if (!isMoving)
             {
