@@ -60,9 +60,7 @@ public class PlayerController : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
 
-            // Movimiento del jugador para que siga de frente
-            // adonde apunta la camara.
-           
+            // Movement of the player so that he continues facing where the camera is pointing
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -73,11 +71,9 @@ public class PlayerController : MonoBehaviour
             
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
-            
 
-            // Detecta cuando el jugador se mueve 
-            // para generar o pausar particulas de caminado
 
+            // Detects when the player moves to generate or pause walking particles
             if (!isMoving)
             {
                 walkParticles.Play();
@@ -96,17 +92,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        
-        //Estas lineas hacen que el personaje tenga gravedad.
-        
+        // These lines make the character have gravity
         playerGravity.y += gravityValue * Time.deltaTime;
         controller.Move(playerGravity * Time.deltaTime);
 
-
-        //activan las animaciones
+        // Set the animations
         animator.SetBool(variableIsGround, controller.isGrounded);
         animator.SetFloat(variableMovement, (Mathf.Abs(vertical) + Mathf.Abs(horizontal)));
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -114,7 +106,6 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Recolectable")
         {
             Instantiate(getLogParticles, transform.position, Quaternion.identity);
-
             playerSound.PlayOneShot(recolectableSFX, 1.0f);
         }
     }

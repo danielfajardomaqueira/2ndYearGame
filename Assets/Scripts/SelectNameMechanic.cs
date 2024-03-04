@@ -9,7 +9,6 @@ public class SelectNameMechanic : MonoBehaviour
 {
 
     //Variables
-
     [SerializeField] private TMP_InputField inputText;
     [SerializeField] private  TMP_Text textName;
     public Image check;
@@ -17,19 +16,15 @@ public class SelectNameMechanic : MonoBehaviour
 
     private void Awake()
     {
-
-        // El color del "Check" siempre empezara de color rojo.
-
+        // The color of the check will always start red
         check.color = Color.red;
     }
 
     private void Update()
     {
-
-        //Cuando la longitud del texto es inferior a 4 letras, el "Check" es rojo
-        //y no aparece el boton "Play". Cuando la longitud es mayor o igual a 4,
-        //el "Check" es de color verde y aparece el boton "Play".
-
+        // When the text length is less than 4 letters, the Check is red
+        // and the Play Button does not appear. When the length is greater than or equal to 4,
+        // the Check is green and the Play Button appears.
 
         if(textName.text.Length < 4)
         {
@@ -47,8 +42,7 @@ public class SelectNameMechanic : MonoBehaviour
     public void Play()
     {
 
-        //Guarda la información del texto escrito por el usuario, y cambia de escena.
-
+        // Save the text information written by the user, and change the scene
         PlayerPrefs.SetString("playerName", inputText.text);
         SceneManager.LoadScene("SampleScene");
     }

@@ -10,35 +10,30 @@ public class DataPersistance : MonoBehaviour
 
     private void Start()
     {
+        //Save player name
 
-        //Guardar nombre del jugador
-        //
-        //
-
-
-        // Encontrar objeto con la etiqueta "playerName"
+        // Find object with tag "playerName"
         GameObject playerNameObject = GameObject.FindGameObjectWithTag("playerName");
 
-        // Asegurar de encontrar un objeto con la etiqueta
         if (playerNameObject != null)
         {
-            // Intentar obtener componente TMP_Text del objeto encontrado
+            // Try to get TMP_Text component from found object
             playerNameText = playerNameObject.GetComponent<TMP_Text>();
 
-            // Asegurar de que se encontró el componente TMP_Text
+            // Ensure that the TMP_Text component was found
             if (playerNameText != null)
             {
-                // Asigna el texto del componente con el nombre del jugador almacenado
+                // Maps the component text with the stored player name
                 playerNameText.text = PlayerPrefs.GetString("playerName");
             }
             else
             {
-                Debug.LogError("No se encontró el componente TMP_Text en el objeto con la etiqueta 'playerName'.");
+                Debug.LogError("The TMP_Text component was not found in the object with tag 'playerName'.");
             }
         }
         else
         {
-            Debug.LogError("No se encontró ningún objeto con la etiqueta 'playerName'.");
+            Debug.LogError("No object with tag 'playerName' was found.");
         }
     }
 

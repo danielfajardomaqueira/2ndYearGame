@@ -6,6 +6,7 @@ TagManager:
   tags:
   - playerName
   - Recolectable
+  - Sign
   layers:
   - Default
   - TransparentFX

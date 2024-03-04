@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField]private GameObject pauseMenu;
-    private bool pause;
+    [SerializeField]private bool pause;
     
     private void Start()
     {
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         pause = !pause;
         pauseMenu.SetActive(pause);
+        
         if (pause)
         {
             Time.timeScale = 0f;
@@ -61,5 +62,6 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu.SetActive(!pause);
         Time.timeScale = 1f;
+        pause = false;
     }
 }

@@ -9,30 +9,30 @@ public class BillBoardFX : MonoBehaviour
 
     void Start()
     {
-        // Obtén la referencia a la cámara principal
+        // Reference to the main camera
         mainCamera = Camera.main;
 
         if (mainCamera == null)
         {
-            Debug.LogError("No se pudo encontrar la cámara principal en la escena.");
+            Debug.LogError("Could not find main camera at scene");
         }
     }
 
     void Update()
     {
-        // Asegúrate de que la cámara se haya asignado correctamente
+        // Make sure the camera has been assigned correctly
         if (mainCamera != null)
         {
-            // Obtener la dirección desde el texto hacia la cámara
+            // Direction from text to camera
             Vector3 lookDir = mainCamera.transform.position - transform.position;
 
-            // texto solo gira alrededor del eje Y
+            // Text only rotates around the Y axis
             lookDir.y = 0;
 
-            // Calcula la rotación para mirar hacia la cámara
+            // Calculate the rotation to face the camera
             Quaternion rotation = Quaternion.LookRotation(-lookDir);
 
-            // Aplica la rotación al objeto (texto)
+            // Applies rotation to the object (text)
             transform.rotation = rotation;
         }
     }
